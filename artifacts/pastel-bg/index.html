@@ -3,10 +3,11 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Neon Pastel</title>
+    <title>Benja Hex</title>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
+    <!-- Background blobs -->
     <div class="scene">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
@@ -17,7 +18,30 @@
       <canvas id="sparkCanvas"></canvas>
     </div>
 
-    <div class="cursor-dot" id="cursorDot"></div>
+    <!-- Center Card -->
+    <div class="center-card">
+      <div class="hex-icon">✦</div>
+      <h1 class="brand-title">Benja Hex</h1>
+      <p class="brand-sub">Welcome to the Neon Realm</p>
+      <div class="brand-line"></div>
+      <div class="brand-tags">
+        <span class="tag">✦ Design</span>
+        <span class="tag">✦ Motion</span>
+        <span class="tag">✦ Magic</span>
+      </div>
+    </div>
+
+    <!-- Denied Toast -->
+    <div class="toast" id="toast">
+      <div class="toast-icon">🛡️</div>
+      <div class="toast-text">
+        <span class="toast-title">This Action Is Denied</span>
+        <span class="toast-sub">By Benja Hex</span>
+      </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"  id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
     <script src="index.js"></script>
