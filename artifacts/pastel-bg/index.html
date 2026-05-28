@@ -4,11 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Benja Hex</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
 
-    <!-- ── Animated Background ───────────── -->
+    <!-- ── Background ─────────────────────────── -->
     <div class="scene">
       <div class="blob blob-1"></div>
       <div class="blob blob-2"></div>
@@ -16,14 +19,55 @@
       <div class="blob blob-4"></div>
       <div class="blob blob-5"></div>
       <div class="blob blob-6"></div>
+      <div class="grid-overlay"></div>
       <canvas id="sparkCanvas"></canvas>
     </div>
 
-    <!-- ── Main App ──────────────────────── -->
+    <!-- ── App ────────────────────────────────── -->
     <div class="app-wrap">
+
+      <!-- HEADER -->
+      <header class="site-header">
+        <div class="brand">
+          <span class="brand-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+              <polygon points="12,2 22,8 22,16 12,22 2,16 2,8" stroke="url(#hg)" stroke-width="1.5" fill="none"/>
+              <circle cx="12" cy="12" r="3" fill="url(#hg2)"/>
+              <defs>
+                <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#5bc8ff"/>
+                  <stop offset="100%" stop-color="#b57fff"/>
+                </linearGradient>
+                <linearGradient id="hg2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#5bc8ff"/>
+                  <stop offset="100%" stop-color="#ff6fcf"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </span>
+          <span class="brand-benja">BENJA</span>
+          <span class="brand-sep">✦</span>
+          <span class="brand-hex">HEX</span>
+        </div>
+
+        <div class="header-controls">
+          <button class="ctrl-btn" id="cursorToggleBtn" title="Toggle Cursor">
+            <svg viewBox="0 0 24 24" fill="currentColor">
+              <path d="M4.5 3.88l4.432 14.382.925-4.463 4.896 4.896 1.414-1.414-4.896-4.896 4.463-.925L4.5 3.88z"/>
+            </svg>
+          </button>
+          <button class="ctrl-btn" id="fullscreenBtn" title="Fullscreen">
+            <svg id="fsIcon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+            </svg>
+          </button>
+        </div>
+      </header>
+
+      <!-- MAIN LAYOUT -->
       <div class="main-layout">
 
-        <!-- LEFT: Bio Editor -->
+        <!-- LEFT -->
         <div class="left-col">
 
           <div class="glass-panel">
@@ -99,9 +143,12 @@
                 <span class="cdot cdot-g"></span>
               </span>
               <span class="con-label">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zM4 6h16v2H4V6zm0 10v-6h16v6H4z"/><circle cx="6" cy="15" r="1"/><rect x="8" y="14" width="4" height="2" rx="1"/></svg>
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm-1 13H5V7h14v10z"/><path d="M6 10l2 2-2 2h3v-1H7.41L9 11.41 7.41 10H9V9H6v1zm4 3h5v-1h-5v1z"/></svg>
                 𝐂𝐎𝐍𝐒𝐎𝐋𝐄
               </span>
+              <button class="con-clear" id="clearConsole" title="Clear">
+                <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-3.5l-1-1h-5l-1 1H5v2h14V4zM6 19a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2V7H6v12z"/></svg>
+              </button>
             </div>
             <div id="consoleLog" class="console-body"></div>
           </div>
@@ -128,7 +175,7 @@
       </footer>
     </div>
 
-    <!-- Toast (bottom-right) -->
+    <!-- Toast -->
     <div class="toast" id="toast">
       <span class="toast-icon">
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/></svg>
@@ -139,7 +186,7 @@
       </div>
     </div>
 
-    <!-- Custom Cursor -->
+    <!-- Cursor -->
     <div class="cursor-dot" id="cursorDot"></div>
     <div class="cursor-ring" id="cursorRing"></div>
 
