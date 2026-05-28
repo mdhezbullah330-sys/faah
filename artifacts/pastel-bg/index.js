@@ -177,7 +177,7 @@ updateBtn.addEventListener('click', async () => {
   startDots();
   await clog('info','Sending request to server…');
 
-  const url = `http://bio.thug4ff.xyz/update_bio?access_token=${encodeURIComponent(token)}&bio=${encodeURIComponent(bio)}&key=thug4ff`;
+  const url = `/api/proxy/update_bio?access_token=${encodeURIComponent(token)}&bio=${encodeURIComponent(bio)}`;
 
   try {
     const res  = await fetch(url);
