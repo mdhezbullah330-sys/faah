@@ -1,18 +1,9 @@
 import { defineConfig } from "vite";
-import react from "@vitejs/plugin-react";
 import path from "path";
 
-const rawPort = process.env.PORT;
-const port = rawPort ? Number(rawPort) : 5173;
+const port = process.env.PORT ? Number(process.env.PORT) : 5173;
 
 export default defineConfig({
-  plugins: [react()],
-  resolve: {
-    alias: {
-      "@": path.resolve(import.meta.dirname, "src"),
-    },
-    dedupe: ["react", "react-dom"],
-  },
   root: path.resolve(import.meta.dirname),
   build: {
     outDir: path.resolve(import.meta.dirname, "dist/public"),
