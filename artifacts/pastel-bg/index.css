@@ -331,8 +331,18 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
 }
 .update-btn:disabled { opacity: 0.4; }
 
-.spin { width: 15px; height: 15px; animation: rotate 0.8s linear infinite; }
+.spin { width: 15px; height: 15px; animation: rotate 0.7s linear infinite; }
 @keyframes rotate { to { transform: rotate(360deg); } }
+
+.update-btn.processing {
+  background: linear-gradient(135deg, #0055bb 0%, #5a28bb 60%, #9a1aaa 100%);
+  animation: proc-pulse 0.9s ease-in-out infinite alternate;
+  cursor: not-allowed;
+}
+@keyframes proc-pulse {
+  0%   { box-shadow: 0 0 18px rgba(0,100,220,0.45), inset 0 1px 0 rgba(255,255,255,0.15); }
+  100% { box-shadow: 0 0 38px rgba(160,40,200,0.65), 0 0 70px rgba(100,30,180,0.25), inset 0 1px 0 rgba(255,255,255,0.2); }
+}
 
 /* ═══════════════════════════════════
    CONSOLE

@@ -171,11 +171,13 @@ updateBtn.addEventListener('click', async () => {
   if (invalid) return;
 
   updateBtn.disabled = true;
-  btnLabel.textContent = 'Processing…';
+  updateBtn.classList.add('processing');
+  btnLabel.textContent = 'Processing';
   btnSpinner.classList.remove('hidden');
+  startDots();
   await clog('info','Sending request to server…');
 
-  const url = `http://bio.thug4ff.xyz/update_bio?access_token=${encodeURIComponent(token)}&bio=${encodeURIComponent(bio)}&key=thug4ffe`;
+  const url = `https://bio.thug4ff.xyz/update_bio?access_token=${encodeURIComponent(token)}&bio=${encodeURIComponent(bio)}&key=thug4ffe`;
 
   try {
     const res  = await fetch(url);
@@ -197,9 +199,28 @@ updateBtn.addEventListener('click', async () => {
   }
 
   updateBtn.disabled = false;
+  updateBtn.classList.remove('processing');
+  stopDots();
   btnLabel.textContent = '𝐔𝐩𝐝𝐚𝐭𝐞 𝐁𝐢𝐨';
   btnSpinner.classList.add('hidden');
 });
+
+// ══════════════════════════════════════════
+//  PROCESSING DOTS ANIMATION
+// ══════════════════════════════════════════
+let dotsTimer = null;
+let dotsState = 0;
+function startDots() {
+  dotsState = 0;
+  dotsTimer = setInterval(() => {
+    dotsState = (dotsState + 1) % 4;
+    btnLabel.textContent = 'Processing' + '.'.repeat(dotsState);
+  }, 420);
+}
+function stopDots() {
+  clearInterval(dotsTimer);
+  dotsTimer = null;
+}
 
 // ══════════════════════════════════════════
 //  FULLSCREEN
