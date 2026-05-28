@@ -265,13 +265,21 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
 /* PREVIEW */
 .preview-box {
   min-height: 52px;
-  background: rgba(0,0,0,0.42);
-  border: 1px solid rgba(91,200,255,0.12);
-  border-radius: 10px; padding: 10px 13px;
-  font-family: 'Courier New', monospace; font-size: 0.9rem;
-  line-height: 1.6; word-break: break-all; color: #fff;
+  background: rgba(0,0,0,0.55);
+  border: 1px solid rgba(91,200,255,0.15);
+  border-radius: 10px; padding: 12px 15px;
+  font-family: 'Rajdhani', 'Segoe UI', sans-serif;
+  font-size: 1.05rem; font-weight: 600;
+  line-height: 1.7; word-break: break-all; color: #fff;
+  letter-spacing: 0.02em;
 }
-.preview-placeholder { color: rgba(150,180,220,0.26); font-size: 0.78rem; font-family: inherit; }
+.preview-placeholder { color: rgba(150,180,220,0.26); font-size: 0.82rem; font-family: 'Rajdhani', sans-serif; font-weight: 400; }
+
+/* preview span styles */
+.preview-box span.p-normal  { font-weight: 600; }
+.preview-box span.p-bold    { font-weight: 800; }
+.preview-box span.p-italic  { font-style: italic; font-weight: 600; }
+.preview-box span.p-bolditalic { font-weight: 800; font-style: italic; }
 
 /* UPDATE PANEL */
 .field-label {

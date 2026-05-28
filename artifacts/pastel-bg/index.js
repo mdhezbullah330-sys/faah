@@ -61,18 +61,33 @@ function parseBio(text) {
   let html = '', color = null, bold = false, italic = false;
   const parts = text.split(/(\[[A-Fa-f0-9]{6}\]|\[b\]|\[\/b\]|\[i\]|\[\/i\])/g);
   parts.forEach(part => {
-    if (/^\[[A-Fa-f0-9]{6}\]$/.test(part))  { color = '#' + part.slice(1,7); }
-    else if (part === '[b]')  { bold = true; }
-    else if (part === '[/b]') { bold = false; }
-    else if (part === '[i]')  { italic = true; }
-    else if (part === '[/i]') { italic = false; }
+    if (/^\[[A-Fa-f0-9]{6}\]$/.test(part)) {
+      color = '#' + part.slice(1,7);
+    } else if (part === '[b]')  { bold = true;  }
+      else if (part === '[/b]') { bold = false; }
+      else if (part === '[i]')  { italic = true;  }
+      else if (part === '[/i]') { italic = false; }
     else if (part) {
-      let style = '';
-      if (color)  style += `color:${color};`;
-      if (bold)   style += 'font-weight:bold;';
-      if (italic) style += 'font-style:italic;';
+      // build inline style
+      let style = 'font-family:\'Rajdhani\',sans-serif;';
+      if (color) style += `color:${color};text-shadow:0 0 8px ${color}88;`;
+
+      let cls = 'p-normal';
+      if (bold && italic) {
+        cls = 'p-bolditalic';
+        style += 'font-weight:800;font-style:italic;';
+      } else if (bold) {
+        cls = 'p-bold';
+        style += 'font-weight:800;';
+      } else if (italic) {
+        cls = 'p-italic';
+        style += 'font-style:italic;font-weight:600;';
+      } else {
+        style += 'font-weight:600;';
+      }
+
       const safe = part.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
-      html += `<span style="${style}">${safe}</span>`;
+      html += `<span class="${cls}" style="${style}">${safe}</span>`;
     }
   });
   return html || '<span class="preview-placeholder">Bio preview will appear here…</span>';
