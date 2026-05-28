@@ -139,24 +139,17 @@ const accessToken = document.getElementById('accessToken');
 const updateBtn   = document.getElementById('updateBtn');
 const btnLabel    = document.getElementById('btnLabel');
 const btnSpinner  = document.getElementById('btnSpinner');
-const tokenErr    = document.getElementById('tokenErr');
-const bioErr      = document.getElementById('bioErr');
 
 updateBtn.addEventListener('click', async () => {
-  tokenErr.classList.add('hidden');
-  bioErr.classList.add('hidden');
-
   const token = accessToken.value.trim();
   const bio   = bioInput.value.trim();
   let invalid = false;
 
   if (!token) {
-    tokenErr.classList.remove('hidden');
     await clog('warn','Access token is empty — please enter your FF Access Token.');
     invalid = true;
   }
   if (!bio) {
-    bioErr.classList.remove('hidden');
     await clog('warn','Bio is empty — please write your bio first.');
     invalid = true;
   }

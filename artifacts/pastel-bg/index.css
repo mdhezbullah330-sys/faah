@@ -18,7 +18,7 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
   background: #02020e;
 }
 
-/* Rotating aurora sweeps */
+/* Rotating aurora sweep */
 .scene::before {
   content: '';
   position: absolute; inset: -50%;
@@ -26,16 +26,16 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
     conic-gradient(
       from 0deg at 30% 40%,
       transparent 0deg,
-      rgba(91,200,255,0.08) 20deg,
+      rgba(91,200,255,0.05) 20deg,
       transparent 60deg,
-      rgba(192,132,255,0.08) 120deg,
+      rgba(192,132,255,0.05) 120deg,
       transparent 160deg,
-      rgba(255,128,207,0.07) 200deg,
+      rgba(255,128,207,0.04) 200deg,
       transparent 240deg,
-      rgba(0,255,204,0.07) 300deg,
+      rgba(0,255,204,0.04) 300deg,
       transparent 360deg
     );
-  animation: aurora-spin 22s linear infinite;
+  animation: aurora-spin 28s linear infinite;
   pointer-events: none;
 }
 @keyframes aurora-spin { to { transform: rotate(360deg); } }
@@ -44,28 +44,19 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 80% 60% at 20% 20%, rgba(91,200,255,0.12) 0%, transparent 60%),
-    radial-gradient(ellipse 70% 50% at 80% 80%, rgba(192,132,255,0.14) 0%, transparent 55%),
-    radial-gradient(ellipse 60% 70% at 50% 50%, rgba(0,255,204,0.06) 0%, transparent 65%);
-  animation: aurora-pulse 8s ease-in-out infinite alternate;
+    radial-gradient(ellipse 70% 50% at 20% 20%, rgba(91,200,255,0.07) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 45% at 80% 80%, rgba(192,132,255,0.08) 0%, transparent 55%);
   pointer-events: none;
-}
-@keyframes aurora-pulse {
-  0%   { opacity: 0.7; transform: scale(1); }
-  50%  { opacity: 1.0; transform: scale(1.04); }
-  100% { opacity: 0.8; transform: scale(0.97); }
 }
 
 /* Grid overlay */
 .grid-overlay {
   position: absolute; inset: 0; pointer-events: none; z-index: 1;
   background-image:
-    linear-gradient(rgba(91,200,255,0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(91,200,255,0.04) 1px, transparent 1px);
-  background-size: 44px 44px;
-  animation: grid-fade 6s ease-in-out infinite alternate;
+    linear-gradient(rgba(91,200,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(91,200,255,0.025) 1px, transparent 1px);
+  background-size: 48px 48px;
 }
-@keyframes grid-fade { 0%{opacity:0.6} 100%{opacity:1.2} }
 
 #sparkCanvas {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -75,8 +66,8 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
 /* BLOBS — vivid neon */
 .blob {
   position: absolute; border-radius: 50%;
-  will-change: transform; filter: blur(80px);
-  opacity: 0.62; mix-blend-mode: screen;
+  will-change: transform; filter: blur(90px);
+  opacity: 0.42; mix-blend-mode: screen;
 }
 .blob-1 { width:72vmax;height:72vmax;background:radial-gradient(circle at 35% 35%,#00d4ff,#0050cc);top:-24vmax;left:-18vmax;animation:d1 22s ease-in-out infinite alternate; }
 .blob-2 { width:64vmax;height:64vmax;background:radial-gradient(circle at 65% 65%,#d466ff,#6600cc);bottom:-18vmax;right:-18vmax;animation:d2 26s ease-in-out infinite alternate; }
@@ -185,26 +176,16 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
    GLASS PANELS — animated neon glow
 ═══════════════════════════════════ */
 .glass-panel {
-  background: rgba(4, 3, 18, 0.85);
-  border: 1px solid rgba(91, 200, 255, 0.16);
+  background: rgba(4, 3, 18, 0.80);
+  border: 1px solid rgba(91, 200, 255, 0.12);
   border-radius: 16px; padding: 18px;
-  backdrop-filter: blur(30px);
-  box-shadow:
-    0 0 0 1px rgba(91,200,255,0.06),
-    inset 0 1px 0 rgba(255,255,255,0.05),
-    0 0 40px rgba(91,200,255,0.05),
-    0 20px 60px rgba(0,0,0,0.7);
-  transition: border-color 0.4s, box-shadow 0.4s;
-  animation: panel-breathe 6s ease-in-out infinite alternate;
-}
-@keyframes panel-breathe {
-  0%   { box-shadow: 0 0 0 1px rgba(91,200,255,0.04), inset 0 1px 0 rgba(255,255,255,0.04), 0 0 30px rgba(91,200,255,0.04), 0 20px 60px rgba(0,0,0,0.7); }
-  50%  { box-shadow: 0 0 0 1px rgba(192,132,255,0.08), inset 0 1px 0 rgba(255,255,255,0.06), 0 0 50px rgba(192,132,255,0.07), 0 20px 60px rgba(0,0,0,0.7); }
-  100% { box-shadow: 0 0 0 1px rgba(0,255,204,0.06), inset 0 1px 0 rgba(255,255,255,0.04), 0 0 40px rgba(0,255,204,0.05), 0 20px 60px rgba(0,0,0,0.7); }
+  backdrop-filter: blur(24px);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 16px 48px rgba(0,0,0,0.6);
+  transition: border-color 0.3s, box-shadow 0.3s;
 }
 .glass-panel:hover {
-  border-color: rgba(91,200,255,0.3);
-  box-shadow: 0 0 0 1px rgba(91,200,255,0.1), inset 0 1px 0 rgba(255,255,255,0.07), 0 0 60px rgba(91,200,255,0.1), 0 20px 60px rgba(0,0,0,0.7);
+  border-color: rgba(91,200,255,0.24);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 30px rgba(91,200,255,0.07), 0 16px 48px rgba(0,0,0,0.6);
 }
 
 .panel-title {
@@ -332,20 +313,15 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
   border: none; border-radius: 11px;
   color: #fff; font-size: 0.86rem; font-weight: 700;
   letter-spacing: 0.08em; cursor: none; transition: all 0.25s;
-  box-shadow: 0 0 26px rgba(0,119,238,0.4), 0 0 60px rgba(124,58,237,0.2), inset 0 1px 0 rgba(255,255,255,0.18);
+  box-shadow: 0 0 18px rgba(0,119,238,0.3), inset 0 1px 0 rgba(255,255,255,0.15);
   position: relative; overflow: hidden;
-  animation: btn-glow 3s ease-in-out infinite alternate;
 }
-@keyframes btn-glow {
-  0%   { box-shadow: 0 0 22px rgba(0,119,238,0.35), 0 0 50px rgba(124,58,237,0.15), inset 0 1px 0 rgba(255,255,255,0.15); }
-  100% { box-shadow: 0 0 40px rgba(192,38,211,0.5), 0 0 80px rgba(124,58,237,0.25), inset 0 1px 0 rgba(255,255,255,0.18); }
-}
-.update-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.12), transparent); }
+.update-btn::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.1), transparent); }
 .update-btn:hover:not(:disabled) {
   transform: translateY(-2px);
-  box-shadow: 0 0 50px rgba(0,119,238,0.65), 0 0 100px rgba(192,38,211,0.35), inset 0 1px 0 rgba(255,255,255,0.2);
+  box-shadow: 0 0 32px rgba(0,119,238,0.5), 0 0 60px rgba(192,38,211,0.2), inset 0 1px 0 rgba(255,255,255,0.18);
 }
-.update-btn:disabled { opacity: 0.4; animation: none; }
+.update-btn:disabled { opacity: 0.4; }
 
 .spin { width: 15px; height: 15px; animation: rotate 0.8s linear infinite; }
 @keyframes rotate { to { transform: rotate(360deg); } }
