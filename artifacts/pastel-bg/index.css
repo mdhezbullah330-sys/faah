@@ -90,7 +90,7 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
   position: relative; z-index: 10;
   min-height: 100vh;
   display: flex; flex-direction: column;
-  padding: 0 20px;
+  padding: 0 20px 62px;
 }
 
 /* ═══════════════════════════════════
@@ -438,9 +438,12 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
    FOOTER
 ═══════════════════════════════════ */
 .site-footer {
+  position: fixed; bottom: 0; left: 0; right: 0; z-index: 40;
   display: flex; justify-content: center; align-items: center; gap: 20px;
-  padding: 16px 0 20px; margin-top: 16px;
-  border-top: 1px solid rgba(91,200,255,0.07);
+  padding: 10px 0 12px;
+  background: rgba(2,2,14,0.88);
+  backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(91,200,255,0.1);
 }
 .foot-link {
   display: flex; align-items: center; gap: 7px;
