@@ -18,36 +18,17 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
   background: #02020e;
 }
 
-/* Rotating aurora sweep */
+/* Static ambient glow — no rotation needed */
 .scene::before {
-  content: '';
-  position: absolute; inset: -50%;
-  background:
-    conic-gradient(
-      from 0deg at 30% 40%,
-      transparent 0deg,
-      rgba(91,200,255,0.05) 20deg,
-      transparent 60deg,
-      rgba(192,132,255,0.05) 120deg,
-      transparent 160deg,
-      rgba(255,128,207,0.04) 200deg,
-      transparent 240deg,
-      rgba(0,255,204,0.04) 300deg,
-      transparent 360deg
-    );
-  animation: aurora-spin 28s linear infinite;
-  pointer-events: none;
-}
-@keyframes aurora-spin { to { transform: rotate(360deg); } }
-
-.scene::after {
   content: '';
   position: absolute; inset: 0;
   background:
-    radial-gradient(ellipse 70% 50% at 20% 20%, rgba(91,200,255,0.07) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 45% at 80% 80%, rgba(192,132,255,0.08) 0%, transparent 55%);
+    radial-gradient(ellipse 70% 55% at 15% 15%, rgba(91,200,255,0.06) 0%, transparent 60%),
+    radial-gradient(ellipse 65% 50% at 85% 85%, rgba(192,132,255,0.07) 0%, transparent 55%),
+    radial-gradient(ellipse 50% 40% at 50% 50%, rgba(0,255,204,0.03) 0%, transparent 65%);
   pointer-events: none;
 }
+.scene::after { display: none; }
 
 /* Grid overlay */
 .grid-overlay {
@@ -66,8 +47,9 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
 /* BLOBS — vivid neon */
 .blob {
   position: absolute; border-radius: 50%;
-  will-change: transform; filter: blur(90px);
-  opacity: 0.42; mix-blend-mode: screen;
+  will-change: transform; filter: blur(100px);
+  opacity: 0.38; mix-blend-mode: screen;
+  transform: translateZ(0);
 }
 .blob-1 { width:72vmax;height:72vmax;background:radial-gradient(circle at 35% 35%,#00d4ff,#0050cc);top:-24vmax;left:-18vmax;animation:d1 22s ease-in-out infinite alternate; }
 .blob-2 { width:64vmax;height:64vmax;background:radial-gradient(circle at 65% 65%,#d466ff,#6600cc);bottom:-18vmax;right:-18vmax;animation:d2 26s ease-in-out infinite alternate; }
@@ -176,16 +158,14 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
    GLASS PANELS — animated neon glow
 ═══════════════════════════════════ */
 .glass-panel {
-  background: rgba(4, 3, 18, 0.80);
+  background: rgba(5, 4, 20, 0.88);
   border: 1px solid rgba(91, 200, 255, 0.12);
   border-radius: 16px; padding: 18px;
-  backdrop-filter: blur(24px);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 16px 48px rgba(0,0,0,0.6);
-  transition: border-color 0.3s, box-shadow 0.3s;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04), 0 12px 36px rgba(0,0,0,0.6);
+  transition: border-color 0.3s;
 }
 .glass-panel:hover {
   border-color: rgba(91,200,255,0.24);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.05), 0 0 30px rgba(91,200,255,0.07), 0 16px 48px rgba(0,0,0,0.6);
 }
 
 .panel-title {
@@ -352,15 +332,13 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
   border-radius: 15px; overflow: hidden;
   height: calc(100vh - 80px - 60px); min-height: 400px;
   display: flex; flex-direction: column;
-  animation: con-border 4s linear infinite;
+  animation: con-border 6s linear infinite;
 }
 @keyframes con-border {
-  0%   { box-shadow: 0 0 0 1.5px #00d4ffaa, 0 0 35px rgba(0,212,255,0.3), 0 24px 70px rgba(0,0,0,0.6); }
-  20%  { box-shadow: 0 0 0 1.5px #d466ffaa, 0 0 35px rgba(212,102,255,0.3), 0 24px 70px rgba(0,0,0,0.6); }
-  40%  { box-shadow: 0 0 0 1.5px #ff55ccaa, 0 0 35px rgba(255,85,204,0.3), 0 24px 70px rgba(0,0,0,0.6); }
-  60%  { box-shadow: 0 0 0 1.5px #00ffccaa, 0 0 35px rgba(0,255,204,0.3), 0 24px 70px rgba(0,0,0,0.6); }
-  80%  { box-shadow: 0 0 0 1.5px #ffe066aa, 0 0 35px rgba(255,224,102,0.3), 0 24px 70px rgba(0,0,0,0.6); }
-  100% { box-shadow: 0 0 0 1.5px #00d4ffaa, 0 0 35px rgba(0,212,255,0.3), 0 24px 70px rgba(0,0,0,0.6); }
+  0%   { box-shadow: 0 0 0 1.5px #00d4ff88, 0 0 20px rgba(0,212,255,0.18), 0 20px 50px rgba(0,0,0,0.6); }
+  33%  { box-shadow: 0 0 0 1.5px #d466ff88, 0 0 20px rgba(212,102,255,0.18), 0 20px 50px rgba(0,0,0,0.6); }
+  66%  { box-shadow: 0 0 0 1.5px #00ffcc88, 0 0 20px rgba(0,255,204,0.18), 0 20px 50px rgba(0,0,0,0.6); }
+  100% { box-shadow: 0 0 0 1.5px #00d4ff88, 0 0 20px rgba(0,212,255,0.18), 0 20px 50px rgba(0,0,0,0.6); }
 }
 
 .console-titlebar {
@@ -393,12 +371,6 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
   padding: 12px 14px;
   font-family: 'Courier New', monospace; font-size: 0.76rem; line-height: 1.78;
   scroll-behavior: smooth;
-  background:
-    repeating-linear-gradient(
-      0deg,
-      rgba(0,0,0,0) 0px, rgba(0,0,0,0) 21.5px,
-      rgba(91,200,255,0.015) 21.5px, rgba(91,200,255,0.015) 22px
-    );
 }
 .console-body::-webkit-scrollbar { width: 3px; }
 .console-body::-webkit-scrollbar-track { background: transparent; }

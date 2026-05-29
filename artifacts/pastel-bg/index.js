@@ -346,7 +346,7 @@ function loop(){
     ring.style.left=rx+'px'; ring.style.top=ry+'px';
   }
   const moved=Math.hypot(mx-lx,my-ly);
-  if(moved>2){ const n=Math.min(Math.floor(moved/3),5); for(let i=0;i<n;i++) addSpark(mx,my); lx=mx;ly=my; }
+  if(moved>5){ const n=Math.min(Math.floor(moved/8),2); for(let i=0;i<n;i++) addSpark(mx,my); lx=mx;ly=my; }
   ctx.clearRect(0,0,canvas.width,canvas.height);
   for(let i=sparks.length-1;i>=0;i--){
     const s=sparks[i];
