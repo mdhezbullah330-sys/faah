@@ -75,15 +75,17 @@ function parseBio(text) {
       let cls = 'p-normal';
       if (bold && italic) {
         cls = 'p-bolditalic';
-        style += 'font-weight:800;font-style:italic;';
+        style += 'font-weight:900;font-style:italic;font-size:1.12em;letter-spacing:0.04em;';
+        if (!color) style += 'text-shadow:0 0 10px rgba(255,255,255,0.4);';
       } else if (bold) {
         cls = 'p-bold';
-        style += 'font-weight:800;';
+        style += 'font-weight:900;font-size:1.12em;letter-spacing:0.04em;';
+        if (!color) style += 'text-shadow:0 0 10px rgba(255,255,255,0.4);';
       } else if (italic) {
         cls = 'p-italic';
-        style += 'font-style:italic;font-weight:600;';
+        style += 'font-style:italic;font-weight:400;opacity:0.88;';
       } else {
-        style += 'font-weight:600;';
+        style += 'font-weight:400;';
       }
 
       const safe = part.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');

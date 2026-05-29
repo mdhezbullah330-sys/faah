@@ -276,10 +276,10 @@ body.normal-cursor, body.normal-cursor * { cursor: default !important; }
 .preview-placeholder { color: rgba(150,180,220,0.26); font-size: 0.82rem; font-family: 'Rajdhani', sans-serif; font-weight: 400; }
 
 /* preview span styles */
-.preview-box span.p-normal  { font-weight: 600; }
-.preview-box span.p-bold    { font-weight: 800; }
-.preview-box span.p-italic  { font-style: italic; font-weight: 600; }
-.preview-box span.p-bolditalic { font-weight: 800; font-style: italic; }
+.preview-box span.p-normal     { font-weight: 400; }
+.preview-box span.p-bold       { font-weight: 900; font-size: 1.12em; letter-spacing: 0.04em; }
+.preview-box span.p-italic     { font-style: italic; font-weight: 400; }
+.preview-box span.p-bolditalic { font-weight: 900; font-style: italic; font-size: 1.12em; }
 
 /* UPDATE PANEL */
 .field-label {
