@@ -1,0 +1,8 @@
+{
+  "buildCommand": "npm run build",
+  "outputDirectory": "dist/public",
+  "framework": "vite",
+  "rewrites": [
+    { "source": "/api/proxy/update_bio", "destination": "/api/proxy/update_bio" }
+  ]
+}
